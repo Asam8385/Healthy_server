@@ -42,7 +42,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-
+app.get('/chat', (req, res)=>{
+  res.json("hello")
+})
 
 
 app.use('/api/v1', router);

@@ -40,6 +40,9 @@ app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.static('public'));
+app.get('/chat'(req, res), {
+    res, : .json("hello")
+});
 app.use('/api/v1', routes_1.default);
 app.use((err, req, res, next) => {
     if (err instanceof apiError_1.default) {
