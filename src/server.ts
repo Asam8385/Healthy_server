@@ -19,7 +19,7 @@ async function bootstrap(){
         console.log('Handler Error');
         exitHandler();
     }
-    process.on('uncaughtException', unexpectedHandler);
+    process.on('uncaughtException',  unexpectedHandler);
     process.on('unhandledRejection', unexpectedHandler);
 
     process.on('SIGTERM', () =>{
