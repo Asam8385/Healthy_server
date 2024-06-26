@@ -117,12 +117,12 @@ const createAppointmentByUnAuthenticateUser = (payload) => __awaiter(void 0, voi
     const { patientInfo, payment } = payload;
     patientInfo['patientId'] = patientInfo.patientId && patientInfo.patientId;
     const result = yield prisma_1.default.$transaction((tx) => __awaiter(void 0, void 0, void 0, function* () {
-        var _v;
+        var _a;
         const previousAppointment = yield tx.appointments.findFirst({
             orderBy: { createdAt: 'desc' },
             take: 1
         });
-        const appointmentLastNumber = ((_v = previousAppointment === null || previousAppointment === void 0 ? void 0 : previousAppointment.trackingId) !== null && _v !== void 0 ? _v : '').slice(-3);
+        const appointmentLastNumber = ((_a = previousAppointment === null || previousAppointment === void 0 ? void 0 : previousAppointment.trackingId) !== null && _a !== void 0 ? _a : '').slice(-3);
         const lastDigit = (Number(appointmentLastNumber) + 1).toString().padStart(3, '0');
         // Trcking Id To be ==> UNU - 'Un Authenticate User  + current year + current month + current day + unique number (Matched Previous Appointment).
         const year = (0, moment_1.default)().year();
