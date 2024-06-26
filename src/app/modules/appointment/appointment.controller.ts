@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import catchAsync from "../../../shared/catchAsync";
 import sendResponse from "../../../shared/sendResponse";
 import { AppointmentService } from "./appointment.service";
 import { Appointments, Patient } from "@prisma/client";
 
-const createAppointment = catchAsync(async (req: Request, res: Response) => {
+const createAppointment = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.createAppointment(req.user, req.body);
     sendResponse(res, {
         statusCode: 200,
@@ -13,7 +13,7 @@ const createAppointment = catchAsync(async (req: Request, res: Response) => {
         data: result
     })
 })
-const createAppointmentByUnAuthenticateUser = catchAsync(async (req: Request, res: Response) => {
+const createAppointmentByUnAuthenticateUser = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.createAppointmentByUnAuthenticateUser(req.body);
     sendResponse(res, {
         statusCode: 200,
@@ -24,7 +24,7 @@ const createAppointmentByUnAuthenticateUser = catchAsync(async (req: Request, re
 })
 
 
-const getAllAppointment = catchAsync(async (req: Request, res: Response) => {
+const getAllAppointment = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getAllAppointments();
     sendResponse<Appointments[]>(res, {
         statusCode: 200,
@@ -34,7 +34,7 @@ const getAllAppointment = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getAppointment = catchAsync(async (req: Request, res: Response) => {
+const getAppointment = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getAppointment(req.params.id);
     sendResponse<Appointments>(res, {
         statusCode: 200,
@@ -44,7 +44,7 @@ const getAppointment = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getAppointmentByTrackingId = catchAsync(async (req: Request, res: Response) => {
+const getAppointmentByTrackingId = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getAppointmentByTrackingId(req.body);
     sendResponse<Appointments>(res, {
         statusCode: 200,
@@ -54,7 +54,7 @@ const getAppointmentByTrackingId = catchAsync(async (req: Request, res: Response
     })
 })
 
-const deleteAppointment = catchAsync(async (req: Request, res: Response) => {
+const deleteAppointment = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.deleteAppointment(req.params.id);
     sendResponse<Appointments>(res, {
         statusCode: 200,
@@ -64,7 +64,7 @@ const deleteAppointment = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const updateAppointment = catchAsync(async (req: Request, res: Response) => {
+const updateAppointment = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.updateAppointment(req.params.id, req.body);
     sendResponse<Appointments>(res, {
         statusCode: 200,
@@ -74,7 +74,7 @@ const updateAppointment = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getPatientAppointmentById = catchAsync(async (req: Request, res: Response) => {
+const getPatientAppointmentById = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getPatientAppointmentById(req.user);
     sendResponse<Appointments[]>(res, {
         statusCode: 200,
@@ -84,7 +84,7 @@ const getPatientAppointmentById = catchAsync(async (req: Request, res: Response)
     })
 })
 
-const getDoctorAppointmentsById = catchAsync(async (req: Request, res: Response) => {
+const getDoctorAppointmentsById = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getDoctorAppointmentsById(req.user, req.query);
     sendResponse(res, {
         statusCode: 200,
@@ -94,7 +94,7 @@ const getDoctorAppointmentsById = catchAsync(async (req: Request, res: Response)
     })
 })
 
-const updateAppointmentByDoctor = catchAsync(async (req: Request, res: Response) => {
+const updateAppointmentByDoctor = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.updateAppointmentByDoctor(req.user, req.body);
     sendResponse<Appointments>(res, {
         statusCode: 200,
@@ -104,7 +104,7 @@ const updateAppointmentByDoctor = catchAsync(async (req: Request, res: Response)
     })
 })
 
-const getDoctorPatients = catchAsync(async (req: Request, res: Response) => {
+const getDoctorPatients = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getDoctorPatients(req.user);
     sendResponse<Patient[]>(res, {
         statusCode: 200,
@@ -114,7 +114,7 @@ const getDoctorPatients = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getPaymentInfoViaAppintmentId = catchAsync(async (req: Request, res: Response) => {
+const getPaymentInfoViaAppintmentId = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getPaymentInfoViaAppintmentId(req.params.id);
     sendResponse(res, {
         statusCode: 200,
@@ -124,7 +124,7 @@ const getPaymentInfoViaAppintmentId = catchAsync(async (req: Request, res: Respo
     })
 })
 
-const getPatientPaymentInfo = catchAsync(async (req: Request, res: Response) => {
+const getPatientPaymentInfo = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getPatientPaymentInfo(req.user);
     sendResponse(res, {
         statusCode: 200,
@@ -134,7 +134,7 @@ const getPatientPaymentInfo = catchAsync(async (req: Request, res: Response) => 
     })
 })
 
-const getDoctorInvoices = catchAsync(async (req: Request, res: Response) => {
+const getDoctorInvoices = catchAsync(async (req: any, res: Response) => {
     const result = await AppointmentService.getDoctorInvoices(req.user);
     sendResponse(res, {
         statusCode: 200,

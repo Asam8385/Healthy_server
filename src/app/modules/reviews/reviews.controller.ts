@@ -66,7 +66,7 @@ const updateReview = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const replyReviewByDoctor = catchAsync(async (req: Request, res: Response) => {
+const replyReviewByDoctor = catchAsync(async (req: any, res: Response) => {
     const result = await ReviewService.replyReviewByDoctor(req.user, req.params.id, req.body);
     sendResponse<Reviews>(res, {
         statusCode: 200,

@@ -3,7 +3,7 @@ import catchAsync from "../../../shared/catchAsync";
 import sendResponse from "../../../shared/sendResponse";
 import { PrescriptionService } from "./prescription.service";
 
-const createPrescription = catchAsync(async (req: Request, res: Response) => {
+const createPrescription = catchAsync(async (req: any, res: Response) => {
     await PrescriptionService.createPrescription(req.user, req.body);
     sendResponse(res, {
         statusCode: 200,
@@ -12,7 +12,7 @@ const createPrescription = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const updatePrescriptionAndAppointment = catchAsync(async (req: Request, res: Response) => {
+const updatePrescriptionAndAppointment = catchAsync(async (req: any, res: Response) => {
     await PrescriptionService.updatePrescriptionAndAppointment(req.user, req.body);
     sendResponse(res, {
         statusCode: 200,
@@ -21,7 +21,7 @@ const updatePrescriptionAndAppointment = catchAsync(async (req: Request, res: Re
     })
 })
 
-const getDoctorPrescriptionById = catchAsync(async (req: Request, res: Response) => {
+const getDoctorPrescriptionById = catchAsync(async (req: any, res: Response) => {
     const result = await PrescriptionService.getDoctorPrescriptionById(req.user);
     sendResponse(res, {
         statusCode: 200,
@@ -31,7 +31,7 @@ const getDoctorPrescriptionById = catchAsync(async (req: Request, res: Response)
     })
 })
 
-const updatePrescription = catchAsync(async (req: Request, res: Response) => {
+const updatePrescription = catchAsync(async (req: any, res: Response) => {
     const result = await PrescriptionService.updatePrescription(req.params.id, req.body);
     sendResponse(res, {
         statusCode: 200,
@@ -41,7 +41,7 @@ const updatePrescription = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getPatientPrescriptionById = catchAsync(async (req: Request, res: Response) => {
+const getPatientPrescriptionById = catchAsync(async (req: any, res: Response) => {
     const result = await PrescriptionService.getPatientPrescriptionById(req.user);
     sendResponse(res, {
         statusCode: 200,
@@ -51,7 +51,7 @@ const getPatientPrescriptionById = catchAsync(async (req: Request, res: Response
     })
 })
 
-const deletePrescription = catchAsync(async (req: Request, res: Response) => {
+const deletePrescription = catchAsync(async (req: any, res: Response) => {
     const result = await PrescriptionService.deletePrescription(req.params.id);
     sendResponse(res, {
         statusCode: 200,
@@ -61,7 +61,7 @@ const deletePrescription = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getPrescriptionById = catchAsync(async (req: Request, res: Response) => {
+const getPrescriptionById = catchAsync(async (req: any, res: Response) => {
     const result = await PrescriptionService.getPrescriptionById(req.params.id);
     sendResponse(res, {
         statusCode: 200,
@@ -71,7 +71,7 @@ const getPrescriptionById = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getAllPrescriptions = catchAsync(async (req: Request, res: Response) => {
+const getAllPrescriptions = catchAsync(async (req: any, res: Response) => {
     const result = await PrescriptionService.getAllPrescriptions();
     sendResponse(res, {
         statusCode: 200,

@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import catchAsync from "../../../shared/catchAsync";
 import sendResponse from "../../../shared/sendResponse";
 import { TimeSlotService } from "./doctorTimeSlot.service";
 import { DoctorTimeSlot } from "@prisma/client";
 
-const createTimeSlot = catchAsync(async (req: Request, res: Response) => {
+const createTimeSlot = catchAsync(async (req: any, res: Response) => {
     const result = await TimeSlotService.createTimeSlot(req.user, req.body);
     sendResponse<DoctorTimeSlot>(res, {
         statusCode: 200,
@@ -14,7 +14,7 @@ const createTimeSlot = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getAllTimeSlot = catchAsync(async (req: Request, res: Response) => {
+const getAllTimeSlot = catchAsync(async (req: any, res: Response) => {
     const result = await TimeSlotService.getAllTimeSlot();
     sendResponse<DoctorTimeSlot[]>(res, {
         statusCode: 200,
@@ -24,7 +24,7 @@ const getAllTimeSlot = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getMyTimeSlot = catchAsync(async (req: Request, res: Response) => {
+const getMyTimeSlot = catchAsync(async (req: any, res: Response) => {
     const result = await TimeSlotService.getMyTimeSlot(req.user, req.query);
     sendResponse<DoctorTimeSlot[]>(res, {
         statusCode: 200,
@@ -34,7 +34,7 @@ const getMyTimeSlot = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getTimeSlot = catchAsync(async (req: Request, res: Response) => {
+const getTimeSlot = catchAsync(async (req: any, res: Response) => {
     const result = await TimeSlotService.getTimeSlot(req.params.id);
     sendResponse<DoctorTimeSlot>(res, {
         statusCode: 200,
@@ -44,7 +44,7 @@ const getTimeSlot = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const updateTimeSlot = catchAsync(async (req: Request, res: Response) => {
+const updateTimeSlot = catchAsync(async (req: any, res: Response) => {
     await TimeSlotService.updateTimeSlot(req.user, req.params.id, req.body);
     sendResponse<DoctorTimeSlot>(res, {
         statusCode: 200,
@@ -53,7 +53,7 @@ const updateTimeSlot = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const deleteTimeSlot = catchAsync(async (req: Request, res: Response) => {
+const deleteTimeSlot = catchAsync(async (req: any, res: Response) => {
     const result = await TimeSlotService.deleteTimeSlot(req.params.id);
     sendResponse<DoctorTimeSlot>(res, {
         statusCode: 200,
@@ -62,7 +62,7 @@ const deleteTimeSlot = catchAsync(async (req: Request, res: Response) => {
         data: result
     })
 })
-const getAppointmentTimeOfEachDoctor = catchAsync(async (req: Request, res: Response) => {
+const getAppointmentTimeOfEachDoctor = catchAsync(async (req: any, res: Response) => {
     const result = await TimeSlotService.getAppointmentTimeOfEachDoctor(req.params.id, req.query);
     sendResponse<DoctorTimeSlot>(res, {
         statusCode: 200,
@@ -72,7 +72,7 @@ const getAppointmentTimeOfEachDoctor = catchAsync(async (req: Request, res: Resp
     })
 })
 
-const getpreAppointmentTimeOfEachDoctor = catchAsync(async (req: Request, res: Response) => {
+const getpreAppointmentTimeOfEachDoctor = catchAsync(async (req: any, res: Response) => {
     const result = await TimeSlotService.getpreTimeSlot(req.params.id, req.query);
     sendResponse<DoctorTimeSlot>(res, {
         statusCode: 200,

@@ -5,11 +5,10 @@ import { Blogs } from "@prisma/client";
 import { IBlogFilters, blogSearchablFields } from "./blog.interface";
 import calculatePagination, { IOption } from "../../../shared/paginationHelper";
 import { IGenericResponse } from "../../../interfaces/common";
-import { Request } from "express";
 import { IUpload } from "../../../interfaces/file";
 import { CloudinaryHelper } from "../../../helpers/uploadHelper";
 
-const createBlog = async (req: Request): Promise<Blogs> => {
+const createBlog = async (req: any): Promise<Blogs> => {
     const user = req.user as any;
     const file = req.file as IUpload;
     const data = JSON.parse(req.body.data);
@@ -114,7 +113,7 @@ const deleteBlog = async (id: string): Promise<Blogs | null> => {
     return result;
 }
 
-const updateBlog = async (req: Request): Promise<Blogs | null> => {
+const updateBlog = async (req: any): Promise<Blogs | null> => {
     const file = req.file as IUpload;
     const id = req.params.id as string;
     const blogData = JSON.parse(req.body.data);
