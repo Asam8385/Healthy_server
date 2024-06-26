@@ -5,7 +5,7 @@ import { Reviews } from "@prisma/client";
 import { ReviewService } from "./reviews.service";
 import pick from "../../../shared/pick";
 
-const creatReview = catchAsync(async (req: Request, res: Response) => {
+const creatReview = catchAsync(async (req: any, res: Response) => {
     const result = await ReviewService.create(req.user, req.body);
     sendResponse<Reviews>(res, {
         statusCode: 200,

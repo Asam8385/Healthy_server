@@ -1,16 +1,25 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "dist/index.js",
-            "use": "@vercel/node",
-            "config": { "includeFiles": ["dist/**"] }
-        }
+      {
+        "src": "server.ts",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "dist/index.js"
-        }
+      { "handle": "filesystem" },
+      {
+        "src": "/api/v1/ask",
+        "dest": "server.ts"
+      },
+      {
+        "src": "/api/v1/(.*)",
+        "dest": "server.ts"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "server.ts"
+      }
     ]
-}
+  }
+  

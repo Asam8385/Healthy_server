@@ -4,7 +4,7 @@ import { JwtHelper } from "../../helpers/jwtHelper";
 import config from "../../config";
 import { Secret } from "jsonwebtoken";
 
-export const auth = (...rules: string[]) => async (req: Request, res: Response, next: NextFunction) => {
+export const auth = (...rules: string[]) => async (req : any , res: Response, next: NextFunction) => {
     try {
         const token = req.headers.authorization;
         if (!token) {
